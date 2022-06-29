@@ -1,0 +1,72 @@
+#Importando modulos
+from random import randint
+
+#defininfo classes 
+class RPG():
+  def __init__(self, name , hp ,atack ,atack1,defesa2):
+    self.name= name
+    self.atack= atack
+    self.hp= hp
+    self.atack1= atack1
+    self.defesa2= defesa2
+  def loose_hp(self,damege):
+    self.hp -= damege 
+
+#definingo os iniciais
+Guerreiro = RPG('Guerreiro',50 ,10,'corte duplo','parede de luz') 
+Mago = RPG('Mago',50 ,10,'bola de fogo','parede de luz') 
+Arqueiro = RPG('Arqueiro',50 ,10,'mil flechas','parede de luz')
+iniciais = {0:Mago,1:Guerreiro,2:Arqueiro} 
+rival= {1:Guerreiro,2:Arqueiro,0:Mago} 
+
+#escolha do inicial
+while True:
+  starter = int(input('chose a RPG. Mago is 0,Guerreiro is 1 ,Arqueiro is 2 : '))
+  if starter > 2 or starter < 0:
+      print ('Por favor, tente novamente.')
+  else:
+         break
+
+
+#definindo inicial: 
+
+for i in range(1,3):
+    if starter == i:
+        self_RPG = iniciais[i]
+        rival_RPG = rival[i]
+
+
+#comeco da batalha 
+print('prepace para a batalha')
+print(f'Vai ,{self_RPG.name}!')
+print(f'Rival enviar ,{rival_RPG.name}!')
+
+#batalha
+
+while self_RPG.hp > 0 and rival_RPG.hp >0:
+    atack= int(input(f'Qual ataque deve ser usado ? 1 e {self_RPG.atack1} ou 2 e {self_RPG.defesa2}: '))
+    while True:
+        if atack > 2 or atack < 1:
+            print('Por favor, tente novamente')
+        else:
+            break
+    if atack == 1:
+        print(f'{self_RPG.name} used {self_RPG.atack1}! {rival_RPG.name} perdeu 10hp!') 
+        rival_RPG.hp -=10
+    else:
+         print(f'{self_RPG.name} used {self_RPG.defesa2} se defendeu !')
+    rival_atack = randint(1, 2)
+    if rival_atack == 1:
+        print(f'{rival_RPG.name} used {rival_RPG.atack1}! {self_RPG.name} perdeu 10hp!')
+        self_RPG.hp -= 10 
+    else:
+        print(f'{rival_RPG.name} used {rival_RPG.defesa2} se defendeu!')
+
+#final da batalha  
+
+if rival_RPG.hp <=0:
+    print('Parabéns! você ganhou PORRA')
+    print(f'{self_RPG.name} ainda tem {self_RPG.hp}hp.')
+elif self_RPG.hp <= 0:
+    print('PORRA DESGRAÇA oh cara você perdeu')
+    print(f'{rival_RPG.name} ainda tem {rival_RPG.hp}hp.')
