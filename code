@@ -30,7 +30,7 @@ while True:
 
 #definindo inicial: 
 
-for i in range(1,3):
+for i in range(0,4):
     if starter == i:
         self_RPG = iniciais[i]
         rival_RPG = rival[i]
